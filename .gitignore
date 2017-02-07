@@ -22,6 +22,7 @@ nytprof.out
 *.swp
 *.swo
 test.pl
+make_*.pl
 .DS_Store
 t
 tw
@@ -36,4 +37,5 @@ tw
 *.sqlite3
 *.xml
 *.dat
+*.json
 foo/
