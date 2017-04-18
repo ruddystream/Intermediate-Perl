@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-use parent qw{ Animal };
+use parent qw( Animal );
 
 =head1 NAME
 
@@ -51,7 +51,7 @@ sub sound {
 
 sub speak {
 	my $class = shift;
-	class->Animal::speak( @_ ); # tell it where to start
+	$class->SUPER::speak( $class ); # tell it where to start
 	print "[but you can barely hear it!]\n";
 }
 

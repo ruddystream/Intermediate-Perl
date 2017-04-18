@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-use parent qw { Animal };
+use parent qw( Animal );
 
 =head1 NAME
 

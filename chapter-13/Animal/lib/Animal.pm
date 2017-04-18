@@ -41,7 +41,7 @@ if you don't export anything, such as for a purely object-oriented module.
 
 sub speak {
 	my $class = shift;
-	print "a $class goes ", $class->sound, "!\n";
+	print "A $class goes ", $class->sound, "!\n";
 }
 
 =head2 sound

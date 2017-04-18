@@ -4,7 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
-use parent qw{ Animal };
+use parent qw( Animal );
+
 =head1 NAME
 
 Sheep - The great new Sheep!
@@ -42,13 +43,6 @@ if you don't export anything, such as for a purely object-oriented module.
 
 sub sound {
 	'baaaa';
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
 }
 
 =head1 AUTHOR
