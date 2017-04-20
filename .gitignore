@@ -25,7 +25,7 @@ nytprof.out
 test.pl
 make_*.pl
 .DS_Store
-t
+template
 tw
 
 # Garbage files that I use for output and such
