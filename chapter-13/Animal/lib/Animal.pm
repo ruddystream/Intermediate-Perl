@@ -4,6 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
+use parent qw( LivingCreature );
+
 =head1 NAME
 
 Animal - The great new Animal!
@@ -41,16 +43,10 @@ if you don't export anything, such as for a purely object-oriented module.
 
 sub speak {
 	my $class = shift;
-	print "A $class goes ", $class->sound, "!\n";
+	die "A ", lc( $class ), " can't TALK!" if @_;
+	$class->SUPER::speak;
 }
 
-=head2 sound
-
-=cut
-
-sub sound {
-	die 'You have to define sound() in a subclass'
-}
 
 =head1 AUTHOR
 
