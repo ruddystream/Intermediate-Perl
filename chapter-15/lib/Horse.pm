@@ -16,7 +16,7 @@ Version 0.01
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.15';
 
 
 =head1 SYNOPSIS
@@ -45,6 +45,13 @@ sub sound {
 	'neigh';
 }
 
+=head2 default_color
+
+=cut
+
+sub default_color {
+	'chestnut';
+}
 
 =head1 AUTHOR
 
@@ -78,7 +85,7 @@ L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
 
 L<http://annocpan.org/dist/Animal>
 
-=item * CPAN Ratings
+Ratings
 
 L<http://cpanratings.perl.org/d/Animal>
 

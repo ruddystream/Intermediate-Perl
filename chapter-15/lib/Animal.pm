@@ -4,6 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
+use Carp qw( croak );
 use parent qw( LivingCreature );
 
 =head1 NAME
@@ -12,23 +13,16 @@ Animal - The great new Animal!
 
 =head1 VERSION
 
-Version 0.01
+Version 0.15
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.15';
 
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Animal;
-
-    my $foo = Animal->new();
-    ...
+This module serves as a base class for creating animals.
 
 =head1 EXPORT
 
@@ -37,21 +31,78 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 speak
-
+=head2 named
+This is the Animal class constructor.
 =cut
+sub named {
+	ref( my $class = shift ) and croak "A class name is needed.";
+	my $name = shift;
+ 	my $self = { 
+  		Name => $name, 
+  		Color => $class->default_color 
+  	};
+	bless $self, $class;
+}
 
+=head2 default_color
+Default color can be overridden in classes inheriting from Animal.
+=cut
+sub default_color {
+	'brown';
+}
+
+=head2 sound
+Sound must be overridden in classes inheriting from Animal.
+BUT: since this is defined in LivingCreature, does it need to be overridden
+     here, AND in further subclasses?
+=cut
+sub sound {
+	croak 'You have to define sound() in a subclass';
+}
+
+=head2 speak
+The Animal speak method.
+=cut
 sub speak {
 	my $class = shift;
 	die "A ", lc( $class ), " can't TALK!" if @_;
 	return $class->SUPER::speak;
 }
 
-=head2 sound
-
+=head2 name
+The Animal name method.
 =cut
-sub sound {
-	die 'You have to define sound() in a subclass';
+sub name {
+  my $either = shift;
+  ref $either
+    ? $either->{Name}
+    : "An unnamed $either";
+}
+
+=head2 color
+The Animal color method.
+=cut
+sub color {
+  my $either = shift;
+  ref $either
+    ? $either->{Color}
+    : $either->default_color;
+}
+
+=head2 set_name
+The Animal name setter.
+=cut
+sub set_name {
+	ref( my $self = shift ) or croak "An instance variable is needed.";
+	$self->{Name} = shift;
+}
+
+=head2 set_color
+The Animal color setter.
+=cut
+sub set_color {
+	ref ( my $self = shift ) or croak "An instance variable is needed.";
+	$self->{Color} = shift;
 }
 
 =head1 AUTHOR
